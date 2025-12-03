@@ -1,18 +1,19 @@
 ---
+import { Fragment } from "astro/jsx-runtime";
+import { siteConfig } from "../config/site";
 ---
 
 <footer>
   <div class="footer-content">
     <div class="footer-text">
-      © 2025 Someone. All rights reserved. • <a
-        href="#"
-        class="footer-link">Privacy Policy</a
-      > • <a href="#" class="footer-link">Terms of Service</a> • <a
-        href="#"
-        class="footer-link">Sitemap</a
-      >
+      {siteConfig.footer.copyright} • {siteConfig.footer.links.map((link, index) => (
+        <Fragment>
+          <a href={link.url} class="footer-link">{link.text}</a>
+          {index < siteConfig.footer.links.length - 1 && " • "}
+        </Fragment>
+      ))}
     </div>
-    <a href="#" class="footer-github">Star this project on Github</a>
+    <a href={siteConfig.footer.github.url} class="footer-github">{siteConfig.footer.github.text}</a>
   </div>
 </footer>
 

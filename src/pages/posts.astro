@@ -1,103 +1,90 @@
 ---
+import { getCollection } from "astro:content";
 import "../styles/home.css";
 import "../styles/posts.css";
 import "../styles/page-transitions.css";
 import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
+import { siteConfig } from "../config/site";
+import { postImages, defaultPostImage } from "../config/posts-images";
 
-// 文章数据
-const posts = [
-  {
-    id: 1,
-    date: "June 27, 2025",
-    title: "Web Performance Optimization Guide 2025",
-    tags: ["Business", "Performance"],
-    excerpt: "Introduction In 2025, web performance has become more critical than ever. With users expecting instant loading times and search engines prioritizing Core Web Vitals, optimizing website performance is essential for success. This comprehensive guide covers the latest techniques and best practices for achieving exceptional web performance. Core Web Vitals and Performance Metrics Understanding and optimizing […]",
-    readTime: "6 min read",
-    slug: "web-performance-optimization-guide-2025",
-    image: "/images/posts/craft-1141796_640.png"
-  },
-  {
-    id: 2,
-    date: "June 27, 2025",
-    title: "Tech Giants' AI Investment Surge",
-    tags: ["CSS"],
-    excerpt: "Introduction Major technology companies have dramatically increased their investments in artificial intelligence, with total spending exceeding $500 billion in 2025 alone. This unprecedented investment surge reflects the growing importance of AI in shaping the future of technology and business across all sectors. Investment Breakdown by Company The investment landscape shows significant commitments from industry leaders: […]",
-    readTime: "5 min read",
-    slug: "tech-giants-ai-investment-surge",
-    image: "/images/posts/work-8660354_640.png"
-  },
-  {
-    id: 3,
-    date: "June 27, 2025",
-    title: "SpaceX Mars Mission Update",
-    tags: ["Gatsby"],
-    excerpt: "Mission Overview SpaceX has achieved a major milestone in its Mars mission program with the successful completion of Starship's first orbital test flight. This historic event brings humanity one step closer to establishing a sustainable presence on the Red Planet. Test Flight Results The orbital test flight demonstrated several critical capabilities: Successful launch and ascent […]",
-    readTime: "2 min read",
-    slug: "spacex-mars-mission-update",
-    image: "/images/posts/logo-2724481_640.png"
-  },
-  {
-    id: 4,
-    date: "June 27, 2025",
-    title: "Quantum Computing Milestone",
-    tags: ["Backend", "Frontend"],
-    excerpt: "Introduction In a historic breakthrough for quantum computing, researchers have successfully developed and demonstrated a quantum computer with over 1000 qubits, marking a significant milestone in the field. This achievement represents a major step toward practical quantum computing applications and opens new possibilities for solving complex computational problems. The Breakthrough The 1000+ qubit quantum computer, […]",
-    readTime: "4 min read",
-    slug: "quantum-computing-milestone",
-    image: "/images/posts/lcd-32872_640.png"
-  },
-  {
-    id: 5,
-    date: "June 27, 2025",
-    title: "Market Analysis Template 2025",
-    tags: ["Business"],
-    excerpt: "Template Note: This comprehensive market analysis template provides a structured approach to conducting thorough industry research and competitive analysis for 2025 and beyond. Executive Summary This template provides a systematic framework for conducting comprehensive market analysis. It covers all essential aspects of market research, from industry overview to competitive positioning, helping organizations make informed strategic […]",
-    readTime: "5 min read",
-    slug: "market-analysis-template-2025",
-    image: "/images/posts/call-3613071_640.png"
-  },
-  {
-    id: 6,
-    date: "June 27, 2025",
-    title: "Major Cybersecurity Breakthrough",
-    tags: [],
-    excerpt: "Introduction In a groundbreaking development that promises to reshape the cybersecurity landscape, researchers have unveiled a revolutionary AI-powered threat detection system that can identify and neutralize cyber attacks with unprecedented accuracy and speed. This breakthrough represents a significant leap forward in protecting digital infrastructure against increasingly sophisticated threats. The Technology Behind the Breakthrough The new […]",
-    readTime: "6 min read",
-    slug: "major-cybersecurity-breakthrough",
-    image: "/images/posts/headphones-1899759_640.png"
-  },
-  {
-    id: 7,
-    date: "June 27, 2025",
-    title: "Business Template – Strategic Planning Framework",
-    tags: ["Node.js"],
-    excerpt: "Template Note: This is a business strategy template that can be customized for different industries and organizational needs. Executive Summary This template provides a comprehensive framework for developing business strategies and plans. It can be adapted for various business contexts, from startups to established enterprises. Business Overview Provide a clear overview of your business, including: […]",
-    readTime: "3 min read",
-    slug: "business-template-strategic-planning-framework",
-    image: "/images/posts/icons-6931458_640.png"
-  },
-  {
-    id: 8,
-    date: "June 26, 2025",
-    title: "Strategic Business Planning for 2025: A Comprehensive Guide",
-    tags: ["Gatsby", "React"],
-    excerpt: "Executive Summary As we approach 2025, businesses face unprecedented challenges and opportunities in an increasingly digital and interconnected world. This strategic planning guide provides a framework for organizations to navigate the complex landscape and position themselves for sustainable growth. Market Analysis and Trends The business environment in 2025 is characterized by several key trends: Accelerated […]",
-    readTime: "4 min read",
-    slug: "strategic-business-planning-for-2025",
-    image: "/images/posts/cloud-3331240_640.png"
-  },
-  {
-    id: 9,
-    date: "May 15, 2025",
-    title: "The Rise of AI-Powered Development Tools in 2025",
-    tags: ["CSS", "Design"],
-    excerpt: "Introduction As we move deeper into 2025, artificial intelligence continues to reshape the software development landscape. From code generation to automated testing, AI tools are becoming an integral part of every developer's toolkit. This article explores the most significant trends and their impact on the development workflow. The Evolution of AI Code Assistants The past […]",
-    readTime: "4 min read",
-    slug: "the-rise-of-ai-powered-development-tools-in-2025",
-    image: "/images/posts/man-1459246_640.png"
+// Get all posts from content collection
+const allPosts = await getCollection("posts");
+
+// Convert date format from "6/27/2025" to "June 27, 2025"
+function formatDate(dateString: string): string {
+  const [month, day, year] = dateString.split("/");
+  const date = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+  return date.toLocaleDateString("en-US", { 
+    year: "numeric", 
+    month: "long", 
+    day: "numeric" 
+  });
+}
+
+
+// Extract plain text from markdown content
+function extractExcerptFromMarkdown(content: string, maxLength: number = 300): string {
+  // Remove markdown syntax
+  let text = content
+    .replace(/^#+\s+/gm, "") // Remove headers
+    .replace(/\[([^\]]+)\]\([^\)]+\)/g, "$1") // Remove links, keep text
+    .replace(/\*\*([^\*]+)\*\*/g, "$1") // Remove bold
+    .replace(/\*([^\*]+)\*/g, "$1") // Remove italic
+    .replace(/`([^`]+)`/g, "$1") // Remove inline code
+    .replace(/```[\s\S]*?```/g, "") // Remove code blocks
+    .replace(/\n+/g, " ") // Replace newlines with space
+    .trim();
+  
+  // Get first maxLength characters
+  if (text.length > maxLength) {
+    text = text.substring(0, maxLength);
+    // Try to cut at a sentence boundary
+    const lastPeriod = text.lastIndexOf('.');
+    const lastSpace = text.lastIndexOf(' ');
+    const cutPoint = lastPeriod > maxLength * 0.7 ? lastPeriod + 1 : lastSpace;
+    if (cutPoint > maxLength * 0.7) {
+      text = text.substring(0, cutPoint);
+    }
+    text += '...';
   }
-];
+  
+  return text;
+}
+
+// Transform content collection posts to match the expected format
+const posts = await Promise.all(
+  allPosts.map(async (post) => {
+    const slug = post.slug;
+    
+    // Try to get excerpt from frontmatter first
+    let excerpt = post.data.excerpt;
+    
+    // If no excerpt in frontmatter, extract from markdown content
+    if (!excerpt) {
+      excerpt = extractExcerptFromMarkdown(post.body, 300);
+    }
+    
+    // Get image from frontmatter, fallback to mapping, then default
+    const image = post.data.image || postImages[slug] || defaultPostImage;
+    
+    return {
+      id: slug,
+      date: formatDate(post.data.date),
+      title: post.data.title,
+      tags: post.data.tags || [],
+      excerpt: excerpt,
+      readTime: post.data.readTime || "5 min read",
+      slug: slug,
+      image: image,
+    };
+  })
+);
+
+// Sort by date (newest first)
+posts.sort((a, b) => {
+  return new Date(b.date).getTime() - new Date(a.date).getTime();
+});
 
 // 按日期分组文章
 const groupedPosts = posts.reduce((acc, post) => {
@@ -108,8 +95,12 @@ const groupedPosts = posts.reduce((acc, post) => {
   return acc;
 }, {} as Record<string, typeof posts>);
 
-// 所有标签
-const allTags = ["Backend", "Business", "CSS", "Design", "Frontend", "Gatsby", "Node.js", "Performance", "React", "Web Development"];
+// Extract all unique tags from posts
+const allTags = Array.from(
+  new Set(
+    posts.flatMap((post) => post.tags.map((tag) => tag))
+  )
+).sort();
 ---
 
 <html lang="en">
@@ -134,13 +125,13 @@ const allTags = ["Backend", "Business", "CSS", "Design", "Frontend", "Gatsby", "
     <main class="posts-page">
       <div class="posts-container page-content">
         <div class="posts-header posts-header-animate">
-          <h1 class="posts-title">Blog Posts</h1>
-          <p class="posts-subtitle">Explore our latest articles on web development, design, and technology</p>
+          <h1 class="posts-title">{siteConfig.posts.title}</h1>
+          <p class="posts-subtitle">{siteConfig.posts.subtitle}</p>
         </div>
         
         <div class="search-filter-section posts-content-animate">
           <div class="search-box">
-            <input type="text" placeholder="Search posts..." class="search-input" id="search-input" />
+            <input type="text" placeholder={siteConfig.posts.searchPlaceholder} class="search-input" id="search-input" />
             <svg class="search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M9 17A8 8 0 1 0 9 1a8 8 0 0 0 0 16z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               <path d="m19 19-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -165,7 +156,7 @@ const allTags = ["Backend", "Business", "CSS", "Design", "Frontend", "Gatsby", "
               <h2 class="date-header">{date}</h2>
               <div class="date-card">
                 {datePosts.map((post) => (
-                  <article class="post-item" data-post-id={post.id}>
+                  <article class="post-item" data-post-id={post.slug}>
                     <div class="post-summary">
                       <div class="title-icon-left"></div>
                       <h3 class="post-title">

@@ -8,6 +8,8 @@ const postsCollection = defineCollection({
     author: z.string().optional(),
     tags: z.array(z.string()).optional(),
     readTime: z.string(),
+    excerpt: z.string().optional(), // Optional excerpt for posts list
+    image: z.string().optional(), // Optional cover image for posts list
   }),
 });
 

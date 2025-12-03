@@ -4,6 +4,7 @@ import "../styles/contact.css";
 import "../styles/page-transitions.css";
 import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
+import { siteConfig } from "../config/site";
 ---
 
 <html lang="en">
@@ -28,9 +29,9 @@ import Footer from "../components/Footer.astro";
     <main class="contact-page">
       <div class="contact-page-container page-content">
         <div class="contact-header contact-header-animate">
-          <h1 class="contact-title">Get In Touch</h1>
+          <h1 class="contact-title">{siteConfig.contact.title}</h1>
           <p class="contact-subtitle">
-            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+            {siteConfig.contact.subtitle}
           </p>
         </div>
 
@@ -44,8 +45,8 @@ import Footer from "../components/Footer.astro";
                   <img src="/svg/email.svg" alt="email icon" class="contact-icon" />
                 </div>
                 <div class="contact-info-content">
-                  <div class="contact-info-label">Email</div>
-                  <a href="mailto:tom@example.com" class="contact-info-value">tom@example.com</a>
+                  <div class="contact-info-label">{siteConfig.contact.info.email.label}</div>
+                  <a href={siteConfig.contact.info.email.link} class="contact-info-value">{siteConfig.contact.info.email.value}</a>
                 </div>
               </div>
 
@@ -54,8 +55,8 @@ import Footer from "../components/Footer.astro";
                   <img src="/svg/phone.svg" alt="phone icon" class="contact-icon" />
                 </div>
                 <div class="contact-info-content">
-                  <div class="contact-info-label">Phone</div>
-                  <a href="tel:+1 (234) 567-890" class="contact-info-value">+1 (234) 567-890</a>
+                  <div class="contact-info-label">{siteConfig.contact.info.phone.label}</div>
+                  <a href={siteConfig.contact.info.phone.link} class="contact-info-value">{siteConfig.contact.info.phone.value}</a>
                 </div>
               </div>
 
@@ -64,39 +65,33 @@ import Footer from "../components/Footer.astro";
                   <img src="/svg/location.svg" alt="location icon" class="contact-icon" />
                 </div>
                 <div class="contact-info-content">
-                  <div class="contact-info-label">Location</div>
-                  <div class="contact-info-value">San Francisco, CA</div>
+                  <div class="contact-info-label">{siteConfig.contact.info.location.label}</div>
+                  <div class="contact-info-value">{siteConfig.contact.info.location.value}</div>
                 </div>
               </div>
             </div>
             <div class="contact-message-button-wrapper">
-              <a href="/comments" class="contact-message-button">💬 Leave a Message</a>
+              <a href="/comments" class="contact-message-button">{siteConfig.contact.messageButton}</a>
             </div>
           </div>
 
           <!-- Follow Me Card -->
           <div class="contact-card contact-card-animate">
-            <h3 class="contact-card-subtitle">Follow Me</h3>
+            <h3 class="contact-card-subtitle">{siteConfig.contact.followMe.title}</h3>
             <div class="social-icons-list">
-              <a href="https://x.com/TencentCloudEO" target="_blank" rel="noopener noreferrer" class="social-icon-link" title="twitter">
-                <img src="/svg/twitter.svg" alt="twitter icon" />
-              </a>
-              <a href="https://www.linkedin.com/company/tencentedgeone" target="_blank" rel="noopener noreferrer" class="social-icon-link" title="linkedin">
-                <img src="/svg/linkedin.svg" alt="linkedin icon" />
-              </a>
-              <a href="https://facebook.com/your_facebook" target="_blank" rel="noopener noreferrer" class="social-icon-link" title="facebook">
-                <img src="/svg/facebook.svg" alt="facebook icon" />
-              </a>
-              <a href="https://github.com/TencentEdgeOne" target="_blank" rel="noopener noreferrer" class="social-icon-link" title="github">
-                <img src="/svg/github.svg" alt="github icon" />
-              </a>
+              {siteConfig.contact.followMe.links.map((social) => (
+                <a href={social.url} target="_blank" rel="noopener noreferrer" class="social-icon-link" title={social.name.toLowerCase()}>
+                  <img src={social.icon} alt={`${social.name} icon`} />
+                </a>
+              ))}
             </div>
           </div>
         </div>
 
-        <div class="contact-footer-text">
-          <p>I typically respond to messages within 24 hours during business days.</p>
-          <p>Looking forward to hearing from you! 🚀</p>
+        <div class="contact-footer-text comments-content-animate">
+          {siteConfig.contact.footerText.map((text) => (
+            <p>{text}</p>
+          ))}
         </div>
       </div>
     </main>

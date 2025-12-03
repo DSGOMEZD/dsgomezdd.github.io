@@ -4,6 +4,7 @@ date: "6/27/2025"
 author: "Someone"
 tags: ["Business", "Performance"]
 readTime: "6 min read"
+image: "/images/posts/craft-1141796_640.png"
 ---
 
 ## Introduction
