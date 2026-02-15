@@ -1,76 +1,72 @@
 // Site-wide configuration
 export const siteConfig = {
   // Site metadata
-  name: "Astro Blog",
-  title: "Astro Blog",
-  description: "A modern blog built with Astro",
+  name: "Portafolio Santiago",
+  title: "Portafolio Santiago",
+  description: "",
   
   // Navigation
   navigation: {
-    home: "Home",
-    posts: "Posts",
-    contact: "Contact",
-    comments: "Comments",
+    home: "Presentacion",
+    posts: "Evidecias",
+    contact: "Contacto",
   },
   
   // Hero Section
   hero: {
-    prefix: "I am",
-    name: "Someone Name",
-    intro: "I am a web developer and blogger, passionate about sharing knowledge and building cool things with code.\nWelcome to my portfolio blog!",
-    avatar: "/image/20943608.jpeg",
+    prefix: "yo soy",
+    name: "David Santiago Gomez Duran",
+    intro: "Soy un estudiante de ingenieria de sistemas, Actualmente Estudio en la universidad del bosque, voy en 4 semestre y este es mi portafolio de evidencias y contenido para Bases de datos I",
+    avatar: "/image/Foto Santiago.jpg",
     buttons: {
-      viewPosts: "View Posts",
-      contactMe: "Contact Me",
+      viewPosts: "Ver Evidencias",
+      contactMe: "Contactame",
     },
     socialLinks: [
-      { name: "Twitter", icon: "/svg/twitter.svg", url: "https://x.com/astrodotbuild" },
-      { name: "LinkedIn", icon: "/svg/linkedin.svg", url: "https://www.linkedin.com/company/astrodotbuild" },
-      { name: "Facebook", icon: "/svg/facebook.svg", url: "https://www.facebook.com/astrodotbuild" },
-      { name: "GitHub", icon: "/svg/github.svg", url: "https://github.com/tomcomtang/astro-cartoon-portfolio" },
+      { name: "Instagram", icon: "/svg/instagram.svg", url: "https://www.instagram.com/g0mez_santiag0_07?igsh=MWNuaXdhd3AxNWYycA==" },
+      { name: "Facebook", icon: "/svg/facebook.svg", url: "https://www.facebook.com/share/1FM5BzYkyx/" },
+      { name: "GitHub", icon: "/svg/github.svg", url: "https://github.com/DSGOMEZD/dsgomezd.github.io" },
     ],
   },
   
   // About Section
   about: {
-    title: "About Me",
-    text: "Hi, I'm Someone, a passionate web developer and blogger. I love exploring new technologies and sharing knowledge with the community. On this blog, you'll find my thoughts on web development, tutorials, and project showcases. I hope my content can inspire others in their coding journey.",
+    title: "Video Presentacion",
+    
   },
   
   // Contact Page
   contact: {
-    title: "Get In Touch",
-    subtitle: "I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.",
+    title: "Pongase en contacto",
+    subtitle: "Siempre estoy abierto a discutir nuevos proyectos, ideas creativas u oportunidades para ser parte de tus visiones.",
     info: {
       email: {
         label: "Email",
-        value: "tom@example.com",
-        link: "mailto:tom@example.com",
+        value: "dsgomezd@unbosque.edu.co",
       },
       phone: {
         label: "Phone",
-        value: "+1 (234) 567-890",
-        link: "tel:+1 (234) 567-890",
+        value: "301-1158556",
+    
       },
       location: {
         label: "Location",
-        value: "San Francisco, CA",
+        value: "Bogota, Colombia",
       },
     },
     followMe: {
-      title: "Follow Me",
+      title: "Sigueme",
       links: [
-        { name: "Twitter", icon: "/svg/twitter.svg", url: "https://x.com/astrodotbuild" },
-        { name: "LinkedIn", icon: "/svg/linkedin.svg", url: "https://www.linkedin.com/company/astrodotbuild" },
-        { name: "Facebook", icon: "/svg/facebook.svg", url: "https://www.facebook.com/astrodotbuild" },
-        { name: "GitHub", icon: "/svg/github.svg", url: "https://github.com/tomcomtang/astro-cartoon-portfolio" },
+        { name: "Instagram", icon: "/svg/instagram.svg", url: "https://www.instagram.com/g0mez_santiag0_07?igsh=MWNuaXdhd3AxNWYycA==" },
+      { name: "Facebook", icon: "/svg/facebook.svg", url: "https://www.facebook.com/share/1FM5BzYkyx/" },
+      { name: "GitHub", icon: "/svg/github.svg", url: "https://github.com/DSGOMEZD/dsgomezd.github.io" },
       ],
     },
     footerText: [
       "I typically respond to messages within 24 hours during business days.",
       "Looking forward to hearing from you! 🚀",
     ],
-    messageButton: "💬 Leave a Message",
+    
   },
   
   // Footer
@@ -89,9 +85,9 @@ export const siteConfig = {
   
   // Posts Page
   posts: {
-    title: "Blog Posts",
-    subtitle: "Explore our latest articles on web development, design, and technology",
-    searchPlaceholder: "Search posts...",
+    title: "Evidencias",
+    subtitle: "Evidencias Bases de datos I",
+    searchPlaceholder: "Buscar Evidencia...",
   },
   
   // Comments Page

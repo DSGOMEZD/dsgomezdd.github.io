@@ -14,85 +14,84 @@ export const projectsConfig = {
   ],
   projects: [
     {
-      title: "E-Commerce Platform",
+      title: "Ninguno por el momento",
       description:
-        "A full-stack e-commerce platform built with React, Node.js, and MongoDB. Features include user authentication, product management, shopping cart, and payment integration.",
-      technologies: ["React", "Node.js", "MongoDB", "Stripe"],
+        "Actualmente no hay proyectos publicados. Próximamente se agregarán evidencias y desarrollos académicos.",
+      technologies: [],
       liveLink: "#",
       githubLink: "#",
     },
     {
-      title: "Task Management App",
+      title: "Ninguno por el momento",
       description:
-        "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features for enhanced productivity.",
-      technologies: ["Vue.js", "Firebase", "Vuex", "Vuetify"],
+        "Actualmente no hay proyectos publicados. Próximamente se agregarán evidencias y desarrollos académicos.",
+      technologies: [],
       liveLink: "#",
       githubLink: "#",
     },
     {
-      title: "Portfolio Website",
+      title: "Ninguno por el momento",
       description:
-        "A modern, responsive portfolio website built with Astro and styled-components. Features smooth animations and SEO optimization for better visibility.",
-      technologies: ["Astro", "Styled-components", "TypeScript", "Netlify"],
+        "Actualmente no hay proyectos publicados. Próximamente se agregarán evidencias y desarrollos académicos.",
+      technologies: [],
       liveLink: "#",
       githubLink: "#",
     },
     {
-      title: "Social Media Dashboard",
+      title: "Ninguno por el momento",
       description:
-        "A comprehensive social media analytics dashboard with real-time data visualization, engagement metrics, and content scheduling features for businesses.",
-      technologies: ["React", "TypeScript", "Chart.js", "REST API"],
+        "Actualmente no hay proyectos publicados. Próximamente se agregarán evidencias y desarrollos académicos.",
+      technologies: [],
       liveLink: "#",
       githubLink: "#",
     },
     {
-      title: "Fitness Tracking App",
+      title: "Ninguno por el momento",
       description:
-        "A mobile-first fitness tracking application with workout plans, progress tracking, and social sharing capabilities to help users stay motivated.",
-      technologies: ["React Native", "Firebase", "Redux", "Expo"],
+        "Actualmente no hay proyectos publicados. Próximamente se agregarán evidencias y desarrollos académicos.",
+      technologies: [],
       liveLink: "#",
       githubLink: "#",
     },
     {
-      title: "Recipe Sharing Platform",
+      title: "Ninguno por el momento",
       description:
-        "An interactive recipe sharing platform where users can discover, create, and share their favorite recipes with the community worldwide.",
-      technologies: ["Next.js", "PostgreSQL", "Prisma", "AWS"],
+        "Actualmente no hay proyectos publicados. Próximamente se agregarán evidencias y desarrollos académicos.",
+      technologies: [],
       liveLink: "#",
       githubLink: "#",
     },
     {
-      title: "E-Learning Platform",
+      title: "Ninguno por el momento",
       description:
-        "A comprehensive e-learning platform with video courses, interactive quizzes, progress tracking, and certificate generation for online education.",
-      technologies: ["React", "Node.js", "MongoDB", "Stripe"],
+        "Actualmente no hay proyectos publicados. Próximamente se agregarán evidencias y desarrollos académicos.",
+      technologies: [],
       liveLink: "#",
       githubLink: "#",
     },
     {
-      title: "Weather Forecast App",
+      title: "Ninguno por el momento",
       description:
-        "A beautiful weather forecast application with location-based forecasts, detailed weather maps, and customizable widgets for accurate weather information.",
-      technologies: ["Vue.js", "OpenWeather API", "Chart.js", "PWA"],
+        "Actualmente no hay proyectos publicados. Próximamente se agregarán evidencias y desarrollos académicos.",
+      technologies: [],
       liveLink: "#",
       githubLink: "#",
     },
     {
-      title: "Music Streaming Service",
+      title: "Ninguno por el momento",
       description:
-        "A modern music streaming platform with personalized playlists, social features, and high-quality audio streaming for music enthusiasts worldwide.",
-      technologies: ["React", "Node.js", "PostgreSQL", "AWS S3"],
+        "Actualmente no hay proyectos publicados. Próximamente se agregarán evidencias y desarrollos académicos.",
+      technologies: [],
       liveLink: "#",
       githubLink: "#",
     },
     {
-      title: "Project Management Tool",
+      title: "Ninguno por el momento",
       description:
-        "An advanced project management tool with Gantt charts, team collaboration, time tracking, and comprehensive reporting for efficient project delivery.",
-      technologies: ["Angular", "NestJS", "PostgreSQL", "Docker"],
+        "Actualmente no hay proyectos publicados. Próximamente se agregarán evidencias y desarrollos académicos.",
+      technologies: [],
       liveLink: "#",
       githubLink: "#",
     },
   ],
 };
-
