@@ -34,7 +34,7 @@ const evidencias = [
           <p class="posts-subtitle">Listado de actividades</p>
         </div>
 
-        <!-- Buscador (SE MANTIENE) -->
+        <!-- Buscador -->
         <div class="search-filter-section posts-content-animate">
           <div class="search-box">
             <input
@@ -46,7 +46,7 @@ const evidencias = [
           </div>
         </div>
 
-        <!-- Lista de evidencias -->
+        <!-- Lista -->
         <div class="posts-list posts-content-animate">
           <div class="date-group">
             <div class="date-card">
@@ -72,9 +72,37 @@ const evidencias = [
                     <div class="post-details">
                       <div class="post-content-wrapper">
                         <div class="post-excerpt-wrapper">
-                          <p class="post-excerpt">
-                            Sin contenido
-                          </p>
+
+                          {item.slug === "modelado" ? (
+                            <>
+                              <p class="post-excerpt">
+                                Descarga los modelos realizados:
+                              </p>
+
+                              <div style="display:flex; flex-direction:column; gap:10px; margin-top:10px;">
+                                <a 
+                                  href="/pdfs/MODELO HOSPITAL.pdf" 
+                                  download
+                                  class="pdf-link"
+                                >
+                                  📄 Descargar Modelo Hospital
+                                </a>
+
+                                <a 
+                                  href="/pdfs/MODELO AEROLINEA.pdf" 
+                                  download
+                                  class="pdf-link"
+                                >
+                                  📄 Descargar Modelo Aerolínea
+                                </a>
+                              </div>
+                            </>
+                          ) : (
+                            <p class="post-excerpt">
+                              Sin contenido
+                            </p>
+                          )}
+
                         </div>
                       </div>
                     </div>
@@ -93,7 +121,6 @@ const evidencias = [
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    // Animaciones
     const pageContent = document.querySelector(".page-content");
     if (pageContent) pageContent.classList.add("visible");
 
@@ -103,7 +130,6 @@ const evidencias = [
     const contentElements = document.querySelectorAll(".posts-content-animate");
     contentElements.forEach((el) => el.classList.add("visible"));
 
-    // Expand / Collapse
     const postToggles = document.querySelectorAll(".post-toggle");
     const postSummaries = document.querySelectorAll(".post-summary");
 
@@ -123,7 +149,7 @@ const evidencias = [
 
     postSummaries.forEach((summary) => {
       summary.addEventListener("click", (e) => {
-        if ((e.target).closest(".post-toggle")) return;
+        if (e.target.closest(".post-toggle")) return;
 
         const postItem = summary.closest(".post-item");
         if (postItem) {
@@ -136,7 +162,6 @@ const evidencias = [
       });
     });
 
-    // Buscador
     const searchInput = document.getElementById("search-input");
 
     if (searchInput) {
@@ -148,11 +173,7 @@ const evidencias = [
           const title =
             item.querySelector(".post-title")?.textContent?.toLowerCase() || "";
 
-          if (title.includes(searchTerm)) {
-            item.style.display = "block";
-          } else {
-            item.style.display = "none";
-          }
+          item.style.display = title.includes(searchTerm) ? "block" : "none";
         });
       });
     }
